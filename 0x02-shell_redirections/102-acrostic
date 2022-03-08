@@ -1,3 +1,2 @@
 #!/bin/bash
-Task 25. cut -c1 | paste -s | tr -d "[:blank:]"
-
+cut -c1 | paste -s | tr -d "[:blank:]"
