@@ -8,7 +8,7 @@
 # receiving a SIGQUIT or SIGTERM.
 
 sudo touch /var/run/holbertonscript.pid
-sudo -C 'echo $$ > /var/run/holbertonscript.pid'
+sudo bash -c 'echo $$ > /var/run/holbertonscript.pid'
 while true
 do
     echo "To infinity and beyond"
