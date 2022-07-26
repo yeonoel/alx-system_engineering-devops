@@ -29,7 +29,7 @@ elif [ "$1" == "stop" ]
 then
 	kill "$(pgrep -f /manage_my_process)"
 	rm /var/run/my_process.pid
-	echo "manage_myprocess stoppend"
+	echo "manage_my_process stoppend"
 elif [ "$1" == "restart" ]
 then
 	kill "$(pgrep -f /manage_my_process)"
