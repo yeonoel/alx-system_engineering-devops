@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Manage my process who writes "I am alive" to the file
+# /tmp/m_process.
+# stop two second between each message.
+
+
+while true
+do
+	echo "I am alive" >> /tmp/my_process
+	sleep 2
+done
