@@ -22,7 +22,6 @@
 if [ "$1" == "start" ]
 then
 	./manage_my_process &
-	touch /var/run/my_process.pid
 	echo $$ > var/run/my_process.pid
 	echo "manage_my_process started"
 
@@ -31,8 +30,8 @@ then
 	kill "$(pgrep -f /manage_my_process)"
 	rm /var/run/my_process.pid
 	echo "manage_my_process stopped"
-elif [ "$1" == "restart" ]
 
+elif [ "$1" == "restart" ]
 then
 	kill "$(pgrep -f /manage_my_process)"
 	rm /var/run/my_process.pid
