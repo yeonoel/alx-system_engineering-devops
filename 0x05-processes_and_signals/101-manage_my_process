@@ -30,7 +30,7 @@ then
 	kill "$(pgrep -f /manage_my_process)"
 	rm /var/run/my_process.pid
 	echo "manage_myprocess stoppend"
-elif [ "$1" = "restart" ]
+elif [ "$1" == "restart" ]
 then
 	kill "$(pgrep -f /manage_my_process)"
 	rm /var/run/my_process.pid
