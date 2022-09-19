@@ -1,6 +1,6 @@
 # 0x0D. Web stack debugging #0
 
-** Background Context **
+**Background Context**
 The Webstack debugging series will train you in the art of debugging. Computers and software rarely work the way we want (that’s the “fun” part of the job!).
 
 Being able to debug a webstack is essential for a Full-Stack Software Engineer, and it takes practice to be a master of it.
@@ -50,7 +50,7 @@ sylvain@ubuntu:~$
 ```
 Note that as you cannot use interactive software such as emacs or vi in your Bash script, everything needs to be done from the command line (including file edition).
 
-** Installing Docker **
+**Installing Docker**
 For this project you will be given a container which you can use to solve the task. If you would like to have Docker so that you can experiment with it and/or solve this problem locally, you can install it on your machine, your Ubuntu 14.04 VM, or your Ubuntu 16.04 VM if you upgraded.
 
 * Mac OS
