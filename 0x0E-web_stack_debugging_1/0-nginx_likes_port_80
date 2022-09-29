@@ -1,3 +1,3 @@
-#!/usr/bin/anv bash
+#!/usr/bin/bash
 # Nginx likes port 80
 service nginx restart
