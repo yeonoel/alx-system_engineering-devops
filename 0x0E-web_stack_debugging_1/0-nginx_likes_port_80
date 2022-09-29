@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 # Nginx likes port 80
-#configuration
+# configuration
 
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
