@@ -1,37 +1,27 @@
 #!/usr/bin/python3
-"""
-Using https://jsonplaceholder.typicode.com
-gathers data from API and exports it to JSON file
-Implemented using recursion
-"""
-import json
-import re
-import requests
-import sys
+"""Python script that, uses the REST API, for a given employee ID,returns
+information about his/her TODO list progress, and export data in the
+CSV format."""
 
+if __name__ == "__main__":
 
-API = "https://jsonplaceholder.typicode.com"
-"""REST API url"""
+    import csv
+    import requests
+    import sys
 
+    userId = sys.argv[1]
+    user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+                        .format(userId))
 
-if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            user_res = requests.get('{}/users/{}'.format(API, id)).json()
-            todos_res = requests.get('{}/todos'.format(API)).json()
-            user_name = user_res.get('username')
-            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
-            with open("{}.json".format(id), 'w') as json_file:
-                user_data = list(map(
-                    lambda x: {
-                        "task": x.get("title"),
-                        "completed": x.get("completed"),
-                        "username": user_name
-                    },
-                    todos
-                ))
-                user_data = {
-                    "{}".format(id): user_data
-                }
-                json.dump(user_data, json_file)
+    name = user.json().get('username')
+
+    todos = requests.get('https://jsonplaceholder.typicode.com/todos')
+
+    filename = userId + '.csv'
+    with open(filename, mode='w') as f:
+        writer = csv.writer(f, delimiter=',', quotechar='"',
+                            quoting=csv.QUOTE_ALL, lineterminator='\n')
+        for task in todos.json():
+            if task.get('userId') == int(userId):
+                writer.writerow([userId, name, str(task.get('completed')),
+                                 task.get('title')])
