@@ -1,27 +1,22 @@
 #!/usr/bin/python3
-"""Python script that, uses the REST API, for a given employee ID,returns
-information about his/her TODO list progress, and export data in the
-CSV format."""
+"""Export data into the Json format"""
 
-if __name__ == "__main__":
+import requests
+import sys
+import json
 
-    import csv
-    import requests
-    import sys
-
+if __name__ == '__main__':
+    endpoint = "https://jsonplaceholder.typicode.com/"
     userId = sys.argv[1]
-    user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                        .format(userId))
+    user = requests.get(endpoint + 'users/{}'.format(userId)).json()
+    todo = requests.get(endpoint + 'todos?userId={}'.format(userId)).json()
 
-    name = user.json().get('username')
-
-    todos = requests.get('https://jsonplaceholder.typicode.com/todos')
-
-    filename = userId + '.csv'
-    with open(filename, mode='w') as f:
-        writer = csv.writer(f, delimiter=',', quotechar='"',
-                            quoting=csv.QUOTE_ALL, lineterminator='\n')
-        for task in todos.json():
-            if task.get('userId') == int(userId):
-                writer.writerow([userId, name, str(task.get('completed')),
-                                 task.get('title')])
+    with open("{}.json".format(userId), 'w') as json_file:
+        json.dump({
+            userId:
+                [{
+                    "task": task.get("title"),
+                    "completed": task.get("completed"),
+                    "username": user.get("username")}
+                 for task in todo]},
+            json_file)
