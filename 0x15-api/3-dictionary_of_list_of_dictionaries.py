@@ -8,11 +8,10 @@ if __name__ == '__main__':
     import json
 
     users = requests.get("https://jsonplaceholder.typicode.com/users/").json()
-
+    users = users.json()
     todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
-
+    todos = todo.json()
     toAll = {}
-    toArr = []
     for user in users:
         taskList = []
         userName = user.get('name')
@@ -21,8 +20,8 @@ if __name__ == '__main__':
                 toDict = {"username": userName,
                           "task": todo.get('title'),
                           "completed": todo.get('completed')}
-                toArr.append(toDict)
-        toAll[user.id] = toArr
+                taskList.append(toDict)
+        toAll[user.get('id')] = taskList
 
     filename = todo_all_employees.json
     with open(filename, mode="w") as f:

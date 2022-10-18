@@ -9,16 +9,16 @@ if __name__ == '__main__':
 
     userId = sys.argv[1]
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                        .format(userId)).json()
+                        .format(userId))
 
-    userName = user.get('name')
+    userName = user.json().get('name')
 
-    todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
+    todos = requests.get("https://jsonplaceholder.typicode.com/todos")
 
     toArr = []
     toUser = {}
 
-    for todo in todos:
+    for todo in todos.json():
         if todo.get('userId') == int(userId):
             toDict = {"task": todo.get("title"),
                       "completed": todo.get('completed'),
