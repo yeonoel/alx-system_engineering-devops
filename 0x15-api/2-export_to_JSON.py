@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """extend your Python script to export data in the json format."""
 
-import sys
-import requests
-import csv
-import json
-
-
 if __name__ == '__main__':
+
+
+    import csv
+    import json
+    import requests
+
     userId = sys.argv[1]
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                         .format(userId)).json()

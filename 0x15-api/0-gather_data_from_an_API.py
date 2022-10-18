@@ -16,7 +16,7 @@ if __name__ == '__main__':
     todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
     numberOfTaskDone = 0
     totalNumberOfTasks = 0
-    arr = []
+
     for todo in todos:
         if todo.get('userId') == int(userId):
             totalNumberOfTasks += 1

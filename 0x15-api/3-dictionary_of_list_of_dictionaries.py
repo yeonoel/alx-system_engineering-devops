@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """This script extend your Python script to export data in the JSON format."""
 
-import requests
-import sys
-import json
-
-
 if __name__ == '__main__':
+
+    import requests
+    import sys
+    import json
+
     users = requests.get("https://jsonplaceholder.typicode.com/users/").json()
 
     todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
