@@ -22,10 +22,12 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     if (response.status_code >= 300):
         return (None)
 
-    resp = response.json()['data']['children']
-    hot_list.append([print(elem.get('data').get('title')) for elem in resp])
     count += response.json().get('data').get('dist')
     after = response.json().get('data').get('after')
+    resp = response.json()['data']['children']
+
+    for elem in resp:
+        hot_list.append(elem.get('data').get('title'))
 
     if (after is not None):
         return (recurse(subreddit, hot_list, after, count))
