@@ -22,8 +22,8 @@ Usage: puppet apply 0-strace_is_your_friend.pp
 
 Hint:
 
-* strace can attach to a current running process
-* You can use tmux to run strace in one window and curl in another one
+* **strace** can attach to a current running process
+* You can use **tmux** to run strace in one window and curl in another one
 
 Requirements:
 
