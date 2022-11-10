@@ -18,3 +18,14 @@ containers, and tasked with fixing the web stack to a working state. For each ta
 **0. Strace is your friend**
 * 0-strace_is_your_friend.pp: Puppet manifest that fixes a typo error causing a WordPress application being served by an Apache web server to fail.
 Usage: puppet apply 0-strace_is_your_friend.pp
+
+
+Hint:
+
+* strace can attach to a current running process
+* You can use tmux to run strace in one window and curl in another one
+
+Requirements:
+
+* Your 0-strace_is_your_friend.pp file must contain Puppet code
+* You can use whatever Puppet resource type you want for you fix
